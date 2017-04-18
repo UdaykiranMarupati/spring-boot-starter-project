@@ -10,7 +10,7 @@ Need gradle to build and run the application.
 $ cd /spring-boot-starter-project
 $ ./gradlew clean build bootrun
 ```
-this might take few minutes if the gradle is not already installed, it will download all the dependencies and then buil the application.
+this might take few minutes if the gradle is not already installed, it will download all the dependencies and then build the application.
 Once the application is build and started then application can be tested using the below URL:
 ```sh.
 http://localhost:8080/sum
