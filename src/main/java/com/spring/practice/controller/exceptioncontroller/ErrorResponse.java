@@ -3,6 +3,14 @@ package com.spring.practice.controller.exceptioncontroller;
 public class ErrorResponse {
 	private String statusCode;
 	private String message;
+	
+	public ErrorResponse() {
+	}
+	
+	ErrorResponse(String statusCode, String message) {
+		this.statusCode = statusCode;
+		this.message = message;
+	}
 
 	public String getStatusCode() {
 		return statusCode;
