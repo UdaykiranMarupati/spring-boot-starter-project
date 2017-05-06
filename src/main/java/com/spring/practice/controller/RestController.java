@@ -2,12 +2,13 @@ package com.spring.practice.controller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.practice.model.Customer;
 import com.spring.practice.model.CustomerRepository;
@@ -17,7 +18,7 @@ import com.spring.practice.model.PracticeModelResponse;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
-	
+
 	@Autowired
 	private CustomerRepository customerRepository;
 
@@ -44,10 +45,9 @@ public class RestController {
 		response.setSum(practiceModel.getElement1() + practiceModel.getElement2());
 		return response;
 	}
-	
 
 	@RequestMapping(value = "/findByName/{name}", method = RequestMethod.GET)
-	public List<Customer> countByLastName(@RequestParam("name") String name)
+	public List<Customer> countByLastName(@PathParam("name") String name)
 			throws com.spring.practice.customerexcetions.BadRequestException {
 		return customerRepository.findAll(Specifications.where(CustomerSpecifications.customerNameEquals(name)));
 	}
