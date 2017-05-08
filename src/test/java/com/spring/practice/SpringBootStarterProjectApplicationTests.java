@@ -25,11 +25,9 @@ public class SpringBootStarterProjectApplicationTests {
 
 	@Test
 	public void countTest() {
-
 		ResponseEntity<PracticeModelResponse> response = restTemplate
 				.getForEntity("http://localhost:" + port + "/count/Bauer", PracticeModelResponse.class);
 		assertNotNull(response);
-		;
 	}
 
 }
