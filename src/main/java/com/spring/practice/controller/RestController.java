@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.websocket.server.PathParam;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,24 +31,20 @@ public class RestController {
 					practiceModel.getElement1() == null ? "Element1 cannot be null" : "Element2 cannot be null");
 		}
 		PracticeModelResponse response = new PracticeModelResponse();
-		response.setSum(practiceModel.getElement1() + practiceModel.getElement2());
+		response.setStatusCode("200");
 		return response;
 	}
 
-	@RequestMapping(value = "/count", method = RequestMethod.GET)
-	public PracticeModelResponse countByLastName(@RequestBody PracticeModelRequest practiceModel)
+	@RequestMapping(value = "/count/{lastName}", method = RequestMethod.GET)
+	public PracticeModelResponse countByLastName(@PathParam("lastName") String lastName)
 			throws com.spring.practice.customerexcetions.BadRequestException {
-		if (practiceModel.getElement1() == null || practiceModel.getElement2() == null) {
-			throw new com.spring.practice.customerexcetions.BadRequestException(
-					practiceModel.getElement1() == null ? "Element1 cannot be null" : "Element2 cannot be null");
-		}
 		PracticeModelResponse response = new PracticeModelResponse();
-		response.setSum(practiceModel.getElement1() + practiceModel.getElement2());
+		response.setSum(customerRepository.countByLastName(lastName));
 		return response;
 	}
 
 	@RequestMapping(value = "/findByName/{name}", method = RequestMethod.GET)
-	public List<Customer> countByLastName(@PathParam("name") String name)
+	public List<Customer> findByLastName(@PathParam("name") String name)
 			throws com.spring.practice.customerexcetions.BadRequestException {
 		return customerRepository.findAll(Specifications.where(CustomerSpecifications.customerNameEquals(name)));
 	}

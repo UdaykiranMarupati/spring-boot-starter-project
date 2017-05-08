@@ -3,7 +3,7 @@ package com.spring.practice.model;
 public class PracticeModelResponse {
 	
 	private String statusCode;
-	private Integer sum;
+	private Long sum;
 	
 	public String getStatusCode() {
 		return statusCode;
@@ -11,10 +11,10 @@ public class PracticeModelResponse {
 	public void setStatusCode(String statusCode) {
 		this.statusCode = statusCode;
 	}
-	public Integer getSum() {
+	public Long getSum() {
 		return sum;
 	}
-	public void setSum(Integer sum) {
+	public void setSum(Long sum) {
 		this.sum = sum;
 	}
 	
