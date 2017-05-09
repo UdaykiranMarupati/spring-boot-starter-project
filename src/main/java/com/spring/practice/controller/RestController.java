@@ -7,6 +7,7 @@ import javax.websocket.server.PathParam;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specifications;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,7 +37,7 @@ public class RestController {
 	}
 
 	@RequestMapping(value = "/count/{lastName}", method = RequestMethod.GET)
-	public PracticeModelResponse countByLastName(@PathParam("lastName") String lastName)
+	public PracticeModelResponse countByLastName(@PathVariable("lastName") String lastName)
 			throws com.spring.practice.customerexcetions.BadRequestException {
 		PracticeModelResponse response = new PracticeModelResponse();
 		response.setSum(customerRepository.countByLastName(lastName));
@@ -44,7 +45,7 @@ public class RestController {
 	}
 
 	@RequestMapping(value = "/findByName/{name}", method = RequestMethod.GET)
-	public List<Customer> findByLastName(@PathParam("name") String name)
+	public List<Customer> findByLastName(@PathVariable("name") String name)
 			throws com.spring.practice.customerexcetions.BadRequestException {
 		return customerRepository.findAll(Specifications.where(CustomerSpecifications.customerNameEquals(name)));
 	}

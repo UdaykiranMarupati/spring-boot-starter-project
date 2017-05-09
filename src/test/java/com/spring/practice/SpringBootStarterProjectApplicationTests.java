@@ -1,10 +1,12 @@
 package com.spring.practice;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+
+import javax.inject.Inject;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -14,10 +16,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.spring.practice.model.PracticeModelResponse;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SpringBootStarterProjectApplicationTests {
 
-	@Autowired
+	@Inject
 	private TestRestTemplate restTemplate;
 
 	@LocalServerPort
@@ -28,6 +30,7 @@ public class SpringBootStarterProjectApplicationTests {
 		ResponseEntity<PracticeModelResponse> response = restTemplate
 				.getForEntity("http://localhost:" + port + "/count/Bauer", PracticeModelResponse.class);
 		assertNotNull(response);
+		assertEquals(new Long(2), response.getBody().getSum());
 	}
 
 }
