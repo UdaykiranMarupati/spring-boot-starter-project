@@ -33,4 +33,11 @@ public class SpringBootStarterProjectApplicationTests {
 		assertEquals(new Long(2), response.getBody().getSum());
 	}
 
+	@Test
+	public void countTest2() {
+		ResponseEntity<PracticeModelResponse> response = restTemplate
+				.getForEntity("http://localhost:" + port + "/count/Palmer", PracticeModelResponse.class);
+		assertNotNull(response);
+	}
+
 }
