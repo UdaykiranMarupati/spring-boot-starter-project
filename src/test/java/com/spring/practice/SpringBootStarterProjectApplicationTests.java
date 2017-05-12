@@ -3,6 +3,8 @@ package com.spring.practice;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.junit.Test;
@@ -16,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.spring.practice.model.Customer;
 import com.spring.practice.model.PracticeModelRequest;
 import com.spring.practice.model.PracticeModelResponse;
 
@@ -55,6 +58,13 @@ public class SpringBootStarterProjectApplicationTests {
 		HttpEntity<PracticeModelRequest> entity = new HttpEntity<PracticeModelRequest>(request, headers);
 		ResponseEntity<PracticeModelResponse> response = restTemplate
 				.postForEntity("http://localhost:" + port + "/sum", entity, PracticeModelResponse.class);
+		assertNotNull(response);
+	}
+	
+	@Test
+	public void findByLastNameTest() {
+		ResponseEntity<Object[]> response = restTemplate
+				.getForEntity("http://localhost:" + port + "/findByName/Palmer", Object[].class);
 		assertNotNull(response);
 	}
 
