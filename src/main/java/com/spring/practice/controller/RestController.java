@@ -50,4 +50,10 @@ public class RestController {
 		return customerRepository.findAll(Specifications.where(CustomerSpecifications.customerNameEquals(name)));
 	}
 
+	@RequestMapping(value = "/findByQuery/{name}", method = RequestMethod.GET)
+	public List<Customer> findByLastNameWithQueryExample(@PathVariable("name") String name)
+			throws com.spring.practice.customerexcetions.BadRequestException {
+		return customerRepository.findByLastNameWithQuery(name);
+	}
+
 }
