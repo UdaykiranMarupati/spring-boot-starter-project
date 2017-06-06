@@ -3,7 +3,9 @@
 Need gradle to build and run the application.
   - clone the application using https://github.com/UdaykiranMarupati/spring-boot-starter-project.git
   
- This project uses in memory database to test the Spring data features including specifications.
+ This project uses in memory database(h2) to test the Spring data features including specifications.
+ 
+ This project also uses spring data specifications features to execute custom queries with conditions.
  
 ### Build:
 
