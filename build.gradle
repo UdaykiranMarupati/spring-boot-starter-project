@@ -25,7 +25,7 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile("org.springframework.boot:spring-boot-starter-data-jpa")
-	compile('org.apache.commons:commons-lang3:3.5')
+	compile('org.apache.commons:commons-lang3:3.17.0')
 	compile("com.h2database:h2")
 	// https://mvnrepository.com/artifact/org.glassfish.hk2.external/javax.inject
 	compile("org.glassfish.hk2.external:javax.inject:2.4.0-b09")
